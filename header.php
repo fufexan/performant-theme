@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
 <head>
+	<script>let movieID = <?php echo get_the_ID(); ?></script>
 	<?php wp_head(); ?>
 	<title><?php wp_title() ?></title>
 </head>
@@ -11,7 +12,7 @@
 			<div class="container">
 				<?php 
 					if ( has_custom_logo() ) { ?>
-						<a href="" class="navbar-brand">
+						<a href="<?php get_home_path(); ?>" class="navbar-brand">
 							<?php the_custom_logo() ?>
 						</a>
 				<?php }
@@ -32,4 +33,4 @@
 		</nav>
 		<hr class="mt-1">
 	</header>
-<div class="container">
+<div class="container d-flex flex-column justify-content-center md-justify-content-left">
