@@ -1,31 +1,60 @@
-$(function () {
-  $('[data-toggle="popover"]').popover()
+/*
+ * main.js
+ */
+
+// enable popovers globally
+jQuery(function ($) {
+  jQuery('[data-toggle="popover"]').popover()
 })
 
+/* 
+ * favourite movies
+ */
+
+// add to favourites behaviour
+function fav(movieID) {
+	let elem = document.getElementById('heart' + movieID);
+
+	elem.classList.add('fas');
+	elem.classList.remove('far');
+
+	elem.removeAttribute('data-content');
+	elem.setAttribute('data-content', 'Added to favourites!');
+}
+
+// remove from favourites behaviour
+function unfav(movieID) {
+	let elem = document.getElementById('heart' + movieID);
+
+	elem.classList.add('far');
+	elem.classList.remove('fas');
+
+	elem.removeAttribute('data-content');
+	elem.setAttribute('data-content', 'Add to favourites');
+}
+
+// check if movie is favourite
 function favstate(movieID) {
 	let storage = [];
 	storage = storage.concat(JSON.parse(window.localStorage.getItem('favmovies')));
 
-	if(storage.includes(movieID)) {
-		document.getElementById('heart' + movieID).classList.add('fas');
-		document.getElementById('heart' + movieID).classList.remove('far');
-	}
+	if(storage.includes(movieID))
+		fav(movieID);
 }
 
+// add or remove movie from favourites
 function favorite(movieID) {
 	let storage = [];
 	storage = storage.concat(JSON.parse(window.localStorage.getItem('favmovies')));
 
 	if(storage.includes(movieID)) {
 		storage.splice(storage.indexOf(movieID), 1);
-		document.getElementById('heart' + movieID).classList.remove('fas');
-		document.getElementById('heart' + movieID).classList.add('far');
-		console.log(movieID + ' removed');
+		unfav(movieID);
+		jQuery('#heart' + movieID).popover('hide').popover('show');
 	} else {
 		storage.push(movieID);
-		document.getElementById('heart' + movieID).classList.remove('far');
-		document.getElementById('heart' + movieID).classList.add('fas');
-		console.log(movieID + ' added');
+		fav(movieID);
+		jQuery('#heart' + movieID).popover('hide').popover('show');
 	}
 	
 	storage = JSON.stringify(storage);
@@ -33,4 +62,13 @@ function favorite(movieID) {
 	window.localStorage.setItem('favmovies', storage);
 }
 
-//document.addEventListener('DOMContentLoaded', favstate)
+/*
+ * reload history page if pressed back on other page
+ */
+if ( document.URL.includes('history') ) {
+	window.onpageshow = function(event) {
+		if (event.persisted) {
+			window.location.reload();
+		}
+	};
+}

@@ -10,7 +10,7 @@
 	</div>
 	<div class="col-lg-8 col-md-6 col-sm-auto align-self-center">
 		<a href="<?php the_permalink(); ?>"><h1 class="font-weight-light text-danger d-inline"><?php the_title(); ?></h1></a>
-		<i id="heart<?php echo $id; ?>" class="far fa-heart d-inline ml-3 text-danger" style="cursor: pointer; font-size: 2em;" onclick="favorite(<?php echo $id; ?>)" aria-hidden=true data-toggle="popover" data-title="Add to favourites" data-trigger="hover focus" data-placement="right"></i>
+		<i id="heart<?php echo $id; ?>" class="far fa-heart d-inline ml-3 text-danger" style="cursor: pointer; font-size: 2em;" onclick="favorite(<?php echo $id; ?>)" aria-hidden=true data-toggle="popover" data-content="Add to favourites" data-trigger="hover focus" data-placement="right"></i>
 		<script>favstate(id);</script>
 		<p><?php echo the_content(); ?></p>
 		<p><?php echo get_the_term_list( '', 'dn_genres', 'Genres: ', ', ', '' ); ?></p>

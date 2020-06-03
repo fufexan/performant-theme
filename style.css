@@ -19,3 +19,11 @@
 	background-position: left;
 	padding-left: 5px;
 }
+
+.active {
+	display: block;
+}
+
+.inactive {
+	display: none;
+}

@@ -3,6 +3,7 @@
 single-dn_movies.php
 
 <?php $id = get_the_ID(); ?>
+<script>let id = <?php echo $id; ?></script>
 
 <?php // The Loop
 if ( have_posts() ) {
@@ -21,7 +22,7 @@ if ( have_posts() ) {
 
 			<div class="col-lg-8 col-md-6 col-sm-auto">
 				<h1 class="font-weight-light text-danger d-inline"><?php echo get_the_title(); ?></h1>
-				<i id="heart<?php echo $id; ?>" class="far fa-heart d-inline ml-3 text-danger" style="cursor: pointer; font-size: 2em;" onclick="favorite(<?php echo $id; ?>)" aria-hidden=true></i>
+				<i id="heart<?php echo $id; ?>" class="far fa-heart d-inline ml-3 text-danger" style="cursor: pointer; font-size: 2em;" onclick="favorite(<?php echo $id; ?>)" aria-hidden=true data-toggle="popover" data-content="Add to favourites" data-trigger="hover focus"></i>
 				<script>favstate(movieID);</script>
 				<p><?php echo get_the_content(); ?></p>
 				<p><?php echo get_the_term_list( $post->ID, 'dn_genres', 'Genres: ', ', ', '' ); ?></p>

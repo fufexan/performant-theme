@@ -4,16 +4,17 @@
 add_theme_support( 'post-thumbnails' );
 
 // Enqueues
-function bootstrap_script() {
+function my_enqueues() {
 	wp_enqueue_style( 'fontawesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css', 1.0, '' );
 	wp_enqueue_style( 'bootstrap', get_stylesheet_directory_uri() . '/inc/bootstrap/css/bootstrap.css', 1.0, '' );
+	wp_enqueue_style( 'style', get_stylesheet_directory_uri() . '/style.css', 1.0, '' );
 	wp_enqueue_script( 'bootstrapjs', get_stylesheet_directory_uri() . '/inc/bootstrap/js/bootstrap.bundle.min.js', array( 'jquery' ), '', false );
-	wp_enqueue_script( 'jquery', 'https://code.jquery.com/jquery-3.4.1.slim.min.js', array( 'jquery' ), '', false );
+	wp_enqueue_script( 'jquery', 'https://code.jquery.com/jquery-3.5.1.min.js', array( 'jquery' ), '', false );
 	wp_enqueue_script( 'popper', 'https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js', array( 'jquery' ), '', false );
 	wp_enqueue_script( 'mainjs', get_stylesheet_directory_uri() . '/inc/js/main.js', array( 'jquery' ), '', false );
-	//wp_enqueue_script( 'fontawesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js', array( 'jquery' ), '', false );
+	wp_enqueue_script( 'cookiejs', get_stylesheet_directory_uri() . '/inc/js/cookies.js', array( 'jquery' ), '', true );
 }
-add_action( 'wp_enqueue_scripts', 'bootstrap_script' );
+add_action( 'wp_enqueue_scripts', 'my_enqueues' );
 
 
 // Register navbars
@@ -40,17 +41,15 @@ add_action( 'after_setup_theme', 'themename_custom_logo_setup' );
 
 // Widget areas
 function register_widget_areas() {
-
-  register_sidebar( array(
-    'name'          => 'Footer area',
-	'id'            => 'footer_area',
-    'description'   => 'Footer widget area',
-    'before_widget' => '<section class="col-md-4 mb-4">',
-    'after_widget'  => '</section>',
-    'before_title'  => '<h4>',
-    'after_title'   => '</h4>',
-  ));
-  
+	register_sidebar( array(
+		'name'          => 'Footer area',
+		'id'            => 'footer_area',
+		'description'   => 'Footer widget area',
+		'before_widget' => '<section class="col-md-4 mb-4">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h4>',
+		'after_title'   => '</h4>',
+	));
 }
 add_action( 'widgets_init', 'register_widget_areas' );
 
@@ -207,3 +206,5 @@ function movie_runtime( $minutes ) {
 function poster_placeholder() {
 	return get_stylesheet_directory_uri() . '/inc/img/placeholder.png';
 }
+
+require_once( wp_normalize_path( get_template_directory() . '/ajax.php' ) );
