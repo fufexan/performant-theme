@@ -1,5 +1,5 @@
-if (document.URL.includes('favourites')) {
-	window.jQuery(function ($) {
+if ( document.URL.includes('favourites') ) {
+	window.jQuery( function ($) {
 
 		let favMovies = window.localStorage.getItem('favmovies');
 
@@ -20,9 +20,8 @@ if (document.URL.includes('favourites')) {
 		}
 
 		function handleFail() {
+			$('#main').html(`<h3 id="fail" class="text-center">Failed to load. <a href=".">Try again</a>.</h3>`);
 			$('#fail').addClass('active');
-			console.log('fail');
-			$('#main').html(`<h3>Failed to load. <a href=".">Try again</a>.</h3>`);
 		}
 
 		function handleAlways() {

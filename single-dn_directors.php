@@ -1,7 +1,5 @@
 <?php get_header(); ?>
 
-single-dn_directors
-
 <h1 class="mb-3"><?php the_title(); ?></h1>
 <?php if( $paged == 0 ) $paged = 1;
 

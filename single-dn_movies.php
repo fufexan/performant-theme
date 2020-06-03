@@ -1,8 +1,5 @@
-<?php get_header(); ?>
-
-single-dn_movies.php
-
-<?php $id = get_the_ID(); ?>
+<?php get_header();
+$id = get_the_ID(); ?>
 <script>let id = <?php echo $id; ?></script>
 
 <?php // The Loop

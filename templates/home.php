@@ -1,8 +1,6 @@
 <?php /* Template Name: Home */ ?>
 <?php get_header(); ?>
 
-templates/home
-
 <?php $colors = [ 'primary', 'secondary', 'success', 'danger', 'warning', 'info' ];
 	$moviesc = wp_count_posts( 'dn_movies' )->publish;
 	$actorsc = wp_count_posts( 'dn_actors' )->publish;

@@ -13,6 +13,7 @@ function my_enqueues() {
 	wp_enqueue_script( 'popper', 'https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js', array( 'jquery' ), '', false );
 	wp_enqueue_script( 'mainjs', get_stylesheet_directory_uri() . '/inc/js/main.js', array( 'jquery' ), '', false );
 	wp_enqueue_script( 'cookiejs', get_stylesheet_directory_uri() . '/inc/js/cookies.js', array( 'jquery' ), '', true );
+	wp_enqueue_script( 'favjs', get_stylesheet_directory_uri() . '/inc/js/fav.js', array( 'jquery' ), '', false );
 }
 add_action( 'wp_enqueue_scripts', 'my_enqueues' );
 

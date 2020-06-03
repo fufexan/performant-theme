@@ -4,9 +4,9 @@ function ajax_scripts () {
 	wp_enqueue_script( 'ajaxjs', get_stylesheet_directory_uri() . '/inc/js/ajax.js', array( 'jquery' ), '', false );
 	wp_localize_script( 'ajaxjs', 'favObj', [ 'favUrl' => admin_url('admin-ajax.php') ] );
 }
-
 add_action( 'wp_enqueue_scripts', 'ajax_scripts' );
 
+// add our action to anonymous or logged in users
 add_action( 'wp_ajax_fav_action', 'fav_action' );
 add_action( 'wp_ajax_nopriv_fav_action', 'fav_action' );
 

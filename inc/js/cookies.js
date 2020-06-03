@@ -9,7 +9,7 @@ function getCookie(cname) {
 		while( c.charAt(0) == ' ' ) {
 			c = c.substring(1);
 		}
-		if(c.indexOf(name) == 0) {
+		if( c.indexOf(name) == 0 ) {
 			return c.substring(name.length, c.length);
 		}
 	}
@@ -45,6 +45,8 @@ function updateCookie(cname, cvalue, exdays = 7) {
 	setCookie(cname, newValue, exdays);
 }
 
-if (document.URL.includes('movies') && document.URL.length > 27) {
+// 27 is the length of 'localhost/wordpress/movies/'
+// TODO: find a better way of detecting a movie page
+if ( document.URL.includes('movies') && document.URL.length > 27 ) {
 	updateCookie('hist', id);
 }

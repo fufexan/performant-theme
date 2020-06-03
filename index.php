@@ -1,7 +1,5 @@
 <?php get_header(); ?>
 
-index.php
-
 <?php // The Loop
 if ( have_posts() ) {
 	while ( have_posts() ) {

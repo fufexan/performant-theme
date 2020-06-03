@@ -1,8 +1,6 @@
 <?php /* Template Name: Genres */ ?>
 <?php get_header(); ?>
 
-templates/genres
-
 <?php $colors = [ 'primary', 'secondary', 'success', 'danger', 'warning', 'info' ]; ?>
 <?php	if( have_posts() ) {
 			while( have_posts() ) { the_post(); ?>
