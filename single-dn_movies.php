@@ -63,6 +63,33 @@ if ( have_posts() ) {
 					<?php echo implode( ', ', $directors ) ?>
 				</p>
 			</div>
+			<form id="form" class="mt-5 ml-3 container justify-content-center" novalidate>
+				<div class="row">
+					<div class="form-group col">
+						<label for="name">Name</label>
+						<input type="text" class="form-control" id="name" placeholder="Your Name" required>
+						<div class="invalid-feedback">Please enter your name.</div>
+					</div>
+					<div class="form-group col">
+						<label for="email">Email</label>
+						<input type="email" class="form-control" id="email" placeholder="you@example.com" required>
+						<div class="invalid-feedback">Please enter your email.</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="message">Message</label>
+					<textarea type="text" class="form-control" id="message" placeholder="A few words from you" required></textarea>
+					<div class="invalid-feedback">Please enter your message.</div>
+				</div>
+				<div class="d-flex align-items-center">
+					<button id="submit" type="submit" class="btn btn-primary mr-2">Submit</button>
+					<div id="loader" class="spinner-border inactive" role="status">
+						<span class="sr-only">Loading...</span>
+					</div>
+				</div>
+			</form>
+			<div id="success" class="alert-success inactive">Successfully sent the message.</div>
+			<div id="fail" class="alert-danger inactive">There was an error sending the message.</div>
 		</div>
 	<?php }
 } else {
